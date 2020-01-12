@@ -1,4 +1,4 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.network
 
 interface BaseServiceCallback<T> {
 

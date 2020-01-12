@@ -1,4 +1,4 @@
-package com.basefy.base_mvvm_libraries;
+package com.basefy.base_mvvm_libraries.network;
 
 import android.text.TextUtils;
 
@@ -14,7 +14,7 @@ import retrofit2.HttpException;
 import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 
 
-public class NetworkError extends Throwable {
+public class BaseNetworkError extends Throwable {
 
     public static final String DEFAULT_ERROR_MESSAGE = "Bir sorun oluştu lütfen tekrar deneyiniz";
     public static final String NETWORK_ERROR_MESSAGE = "İnternet bağlantınız yok. Lütfen bağlantıyı kontrol edeniz";
@@ -22,13 +22,13 @@ public class NetworkError extends Throwable {
     private final Throwable error;
     private final int code;
 
-    public NetworkError(int code, Throwable e) {
+    public BaseNetworkError(int code, Throwable e) {
         super(e);
         this.error = e;
         this.code = code;
     }
 
-    public NetworkError(Throwable e) {
+    public BaseNetworkError(Throwable e) {
         this(-1, e);
     }
 
@@ -84,7 +84,7 @@ public class NetworkError extends Throwable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        NetworkError that = (NetworkError) o;
+        BaseNetworkError that = (BaseNetworkError) o;
 
         return error != null ? error.equals(that.error) : that.error == null;
 

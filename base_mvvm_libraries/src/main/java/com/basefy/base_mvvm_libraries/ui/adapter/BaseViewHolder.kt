@@ -1,4 +1,4 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
 @Suppress("UNCHECKED_CAST")
-abstract class BaseMVVMViewHolder<M : RecyclerItem, V : ViewDataBinding> :
+abstract class BaseViewHolder<M : RecyclerItem, V : ViewDataBinding> :
     RecyclerView.ViewHolder, LayoutContainer {
 
     constructor(itemView: View) : super(itemView)

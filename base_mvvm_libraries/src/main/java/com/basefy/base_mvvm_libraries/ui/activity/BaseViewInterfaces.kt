@@ -1,7 +1,7 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.ui.activity
 
 
-interface BaseMVVMInterfaces {
+interface BaseViewInterfaces {
     fun showMessage(message: String)
     fun showLoading()
     fun hideLoading()
