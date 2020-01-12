@@ -23,6 +23,7 @@ class CommonMVVMUtils {
             progressDialog.setContentView(R.layout.progress_dialog)
             progressDialog.setCancelable(false)
             progressDialog.setCanceledOnTouchOutside(false)
+
             return progressDialog
         }
     }

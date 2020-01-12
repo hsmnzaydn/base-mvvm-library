@@ -1,4 +1,4 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.ui.activity
 
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -8,13 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.basefy.base_mvvm_libraries.ui.view_model.BaseViewModel
 import com.basefy.base_mvvm_libraries.utility.CommonMVVMUtils
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseMVVMActvity<T : ViewDataBinding, VM : BaseMVVMViewModel<BaseMVVMInterfaces>> :
+abstract class BaseViewActvity<T : ViewDataBinding, VM : BaseViewModel<BaseViewInterfaces>> :
     DaggerAppCompatActivity(),
-    BaseMVVMInterfaces {
+    BaseViewInterfaces {
 
     var progressDialog: ProgressDialog? = null
 
@@ -49,12 +50,11 @@ abstract class BaseMVVMActvity<T : ViewDataBinding, VM : BaseMVVMViewModel<BaseM
 
     }
     override fun showMessage(message: String) {
-        Toast.makeText(this@BaseMVVMActvity, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this@BaseViewActvity, message, Toast.LENGTH_LONG).show()
     }
 
     override fun showLoading() {
-        progressDialog = CommonMVVMUtils.showLoadingDialog(this@BaseMVVMActvity)
-
+        progressDialog = CommonMVVMUtils.showLoadingDialog(this@BaseViewActvity)
     }
 
     override fun hideLoading() {

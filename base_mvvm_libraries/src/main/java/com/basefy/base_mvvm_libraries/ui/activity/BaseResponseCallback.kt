@@ -1,10 +1,11 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.ui.activity
 
+import com.basefy.base_mvvm_libraries.network.BaseServiceCallback
 
 
 abstract class BaseResponseCallBack<R> constructor(
-    private val baseInterfaces: BaseMVVMInterfaces
-) : BaseMVVMServiceCallback<R> {
+    private val baseInterfaces: BaseViewInterfaces
+) : BaseServiceCallback<R> {
 
     override fun onSuccess(response: R?) {
         baseInterfaces.hideLoading()

@@ -1,4 +1,4 @@
-package com.basefy.base_mvvm_libraries
+package com.basefy.base_mvvm_libraries.network
 
 import com.google.gson.Gson
 
@@ -20,7 +20,10 @@ open class BaseServicesImp  constructor(
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(onNext(callback)) {
-            callback.onError(NetworkError(it).errorCode, NetworkError(it).appErrorMessage)
+            callback.onError(
+                BaseNetworkError(it).errorCode, BaseNetworkError(
+                    it
+                ).appErrorMessage)
         }
 
     fun <T > onNext(callback: BaseServiceCallback<T>): (T) -> Unit = {
