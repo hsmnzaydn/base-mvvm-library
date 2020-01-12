@@ -19,8 +19,8 @@ public class BaseNetworkError extends Throwable {
     public static final String DEFAULT_ERROR_MESSAGE = "Bir sorun oluştu lütfen tekrar deneyiniz";
     public static final String NETWORK_ERROR_MESSAGE = "İnternet bağlantınız yok. Lütfen bağlantıyı kontrol edeniz";
     private static final String ERROR_MESSAGE_HEADER = "Error-Message";
-    private final Throwable error;
-    private final int code;
+    private  Throwable error;
+    private  int code;
 
     public BaseNetworkError(int code, Throwable e) {
         super(e);
@@ -29,9 +29,16 @@ public class BaseNetworkError extends Throwable {
     }
 
     public BaseNetworkError(Throwable e) {
-        this(-1, e);
+        try {
+            new BaseNetworkError(((HttpException) e).code(), e);
+            this.error = e;
+            this.code = ((HttpException) e).code();
+        } catch (Exception a) {
+            new BaseNetworkError(-1, e);
+            this.error = e;
+            this.code = -1;
+        }
     }
-
     public String getMessage() {
         return error.getMessage();
     }
